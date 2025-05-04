@@ -73,7 +73,13 @@ istream& operator>> (istream& in, tJuego& juego) {
 
     return in;
 }
+/*
+bool cargar_juegos(tListaJuegos& lista_juegos) {
 
+
+
+}
+*/
 const char CHAR_MINA = '*';     // Mina
 
 

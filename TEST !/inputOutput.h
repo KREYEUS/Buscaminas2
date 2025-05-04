@@ -16,6 +16,11 @@ void mostrar_juego_consola(const tJuego& juego);
 bool carga_juego(tJuego& juego);
 std::istream& operator>> (std::istream& in, tJuego& juego);
 
+//bool cargar_juegos(tListaJuegos& lista_juegos);
+/*
+mostrar_juegos(lista_juegos);
+guardar_juegos(lista_juegos);
+*/
 
 const int N_HUECOS = 2; // huecos a dejar en el formato de las celdas.
 

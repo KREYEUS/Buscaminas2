@@ -6,8 +6,8 @@ using namespace std;
 const int TAM = 8;
 
 typedef int tArrayDirX[TAM];
-tArrayDirX DirX = { -1, -1, -1, 0, 1, 1, 1, 0 };
-tArrayDirX DirY = { -1, 0, 1, 1, 1, 0, -1, -1 };
+const tArrayDirX DirX = { -1, -1, -1, 0, 1, 1, 1, 0 };
+const tArrayDirX DirY = { -1, 0, 1, 1, 1, 0, -1, -1 };
 
 void inicializar(tJuego& juego)
 {

@@ -14,13 +14,12 @@ typedef struct {
 
 void inicializar(tListaJuegos& lista_juegos);
 void destruye(tListaJuegos& lista_juegos);
+void insertar(tListaJuegos& lista_juegos, const tJuego& juego);
+int numero_juegos(const tListaJuegos&  lista_juegos);
+bool es_vacia(const tListaJuegos& lista_juegos);
+tJuego dame_juego(const tListaJuegos& lista_juegos, int pos);
+void eliminar(tListaJuegos& lista_juegos, int pos);
 
-/*
+void redimensionamiento(tListaJuegos& lista_juegos);
 
- 
- insertar(lista_juegos, juego);
- numero_juegos(lista_juegos);
- es_vacia(lista_juegos);
- dame_juego(lista_juegos, pos);
- eliminar(lista_juegos, pos);
-*/
+// int busqueda(const tListaJuegos& lista_juegos, const tJuego& juego); // Hay que implementarlo?

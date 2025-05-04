@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "Juego.h"
+#include "listaJuegos.h"
 #include "colors.h"
 #include <iomanip>
 #include <string>

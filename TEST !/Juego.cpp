@@ -217,14 +217,20 @@ void juega(tJuego& juego, int fila, int columna, tListaPosiciones& lista_pos) {
 	}
 }
 
-/*
+
 int calcula_nivel(const tJuego& juego) {
 	int nFil = dame_num_filas(juego), nCol = dame_num_columnas(juego), nMin = dame_num_minas(juego);
-	int nivel = (nFil * nCol) / nMin;
+	int nivel = (nFil * nCol) / nMin; // Podría nMin ser 0?
 
-	return nivel
+	return nivel;
+}
+/*
+void crear_juego(int num_fils, int num_cols, int num_minas) {
+
+
 }
 */
+
 
 int dame_num_descubiertas(const tJuego& juego) {
 	return juego.num_descubiertas;

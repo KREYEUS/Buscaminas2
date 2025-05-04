@@ -131,6 +131,7 @@
     <ClCompile Include="Celda.cpp" />
     <ClCompile Include="inputOutput.cpp" />
     <ClCompile Include="Juego.cpp" />
+    <ClCompile Include="listaJuegos.cpp" />
     <ClCompile Include="listaPosiciones.cpp" />
     <ClCompile Include="listaUndo.cpp" />
     <ClCompile Include="main.cpp" />
@@ -141,6 +142,7 @@
     <ClInclude Include="colors.h" />
     <ClInclude Include="inputOutput.h" />
     <ClInclude Include="Juego.h" />
+    <ClInclude Include="listaJuegos.h" />
     <ClInclude Include="listaPosiciones.h" />
     <ClInclude Include="listaUndo.h" />
     <ClInclude Include="Tablero.h" />

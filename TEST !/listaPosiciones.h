@@ -2,7 +2,7 @@
 
 #pragma once
 
-const int MAX_LISTA = 10;
+const int MAX_LISTA = 100;
 
 typedef struct {
 	int posx;

@@ -185,38 +185,43 @@ void ocultar(tJuego& juego, int fila, int columna) {
 }
 
 void juega(tJuego& juego, int fila, int columna, tListaPosiciones& lista_pos) {
-	int numCel;
 	if (es_valida(juego.tablero, fila, columna)) {
 		tCelda celda = dame_celda(juego.tablero, fila, columna);
 		if (!esVisible(celda) && !estaMarcada(celda)) {
 
 			descubrir_celda(celda);
 			juego.num_descubiertas++;
+			poner_celda(juego.tablero, fila, columna, celda);
 			insertar_final(lista_pos, fila, columna);
 			juego.num_jugadas++;
-			numCel = dameNumero(celda);
 
-			if (!esMina(celda) && numCel <= 0) {
-				for (int i = 0; i < TAM; i++) {
-					int filaSig = fila + DirX[i], ColSig = columna + DirY[i];
-
-					tCelda celdaAd = dame_celda(juego.tablero, filaSig, ColSig);
-					if (!estaMarcada(celdaAd) && !esVisible(celdaAd) && es_valida(juego.tablero, filaSig, ColSig)) {
-						descubrir_celda(celdaAd);
-						juego.num_descubiertas++;
-						poner_celda(juego.tablero, filaSig, ColSig, celdaAd);
-						insertar_final(lista_pos, filaSig, ColSig);
-					}
-				}
-			}
-			else if (esMina(celda)) {
+			descubrir_alrededores(juego, fila, columna, celda, lista_pos);
+			
+			if (esMina(celda)) {
 				juego.mina_explotada = true;
 			}
 		}
-		poner_celda(juego.tablero, fila, columna, celda);
 	}
 }
 
+void descubrir_alrededores(tJuego& juego, int fila, int columna, const tCelda& celda, tListaPosiciones& lista_pos) {
+	int numCel = dameNumero(celda);
+	if (!esMina(celda) && numCel <= 0) {
+		for (int i = 0; i < TAM; i++) {
+			int filaSig = fila + DirX[i], ColSig = columna + DirY[i];
+
+			tCelda celdaAd = dame_celda(juego.tablero, filaSig, ColSig);
+			if (!estaMarcada(celdaAd) && !esVisible(celdaAd) && es_valida(juego.tablero, filaSig, ColSig)) {
+				descubrir_celda(celdaAd);
+				juego.num_descubiertas++;
+				poner_celda(juego.tablero, filaSig, ColSig, celdaAd);
+				insertar_final(lista_pos, filaSig, ColSig);
+
+				descubrir_alrededores(juego, filaSig, ColSig, celdaAd, lista_pos);
+			}
+		}
+	}
+}
 
 int calcula_nivel(const tJuego& juego) {
 	int nFil = dame_num_filas(juego), nCol = dame_num_columnas(juego), nMin = dame_num_minas(juego);
@@ -224,6 +229,7 @@ int calcula_nivel(const tJuego& juego) {
 
 	return nivel;
 }
+
 /*
 void crear_juego(int num_fils, int num_cols, int num_minas) {
 

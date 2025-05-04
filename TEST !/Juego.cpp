@@ -199,12 +199,13 @@ int calcula_nivel(const tJuego& juego) {
 	return nivel;
 }
 
-/*
-void crear_juego(int num_fils, int num_cols, int num_minas) {
 
-
+tJuego crear_juego(int num_fils, int num_cols, int num_minas) {
+	tJuego juego;
+	inicializar(juego, num_fils, num_cols);
+	// Falta implementar las minas
 }
-*/
+
 
 
 int dame_num_descubiertas(const tJuego& juego) {

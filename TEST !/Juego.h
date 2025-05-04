@@ -38,7 +38,7 @@ void descubrir_alrededores(tJuego& juego, int fila, int columna, const tCelda& c
 
 int calcula_nivel(const tJuego& juego);
 
-// void crear_juego(int num_fils, int num_cols, int num_minas);
+tJuego crear_juego(int num_fils, int num_cols, int num_minas);
 // Como añado minas aleatorias?
 
 int dame_num_descubiertas(const tJuego& juego);

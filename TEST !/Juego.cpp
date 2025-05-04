@@ -52,48 +52,33 @@ int dame_num_minas(const tJuego& juego)
 }
 
 bool contiene_mina(const tJuego& juego, int fila, int columna) {
-	bool mina = false;
 	tCelda celda = dame_celda(juego.tablero, fila, columna);
-	if (esMina(celda) == true) {
-		mina = true;
-	}
-	return mina;
+	
+	return esMina(celda);
 }
 
 bool es_visible(const tJuego& juego, int fila, int columna) {
-	bool visible = false;
 	tCelda celda = dame_celda(juego.tablero, fila, columna);
-	if (esVisible(celda) == true) {
-		visible = true;
-	}
-	return visible;
+	
+	return esVisible(celda);
 }
 
 bool esta_marcada(const tJuego& juego, int fila, int columna) {
-	bool marcada = false;
 	tCelda celda = dame_celda(juego.tablero, fila, columna);
-	if (estaMarcada(celda) == true) {
-		marcada = true;
-	}
-	return marcada;
+
+	return estaMarcada(celda);
 }
 
 bool esta_vacia(const tJuego& juego, int fila, int columna) {
-	bool vacio = false;
 	tCelda celda = dame_celda(juego.tablero, fila, columna);
-	if (estaVacia(celda) == true) {
-		vacio = true;
-	}
-	return vacio;
+	
+	return estaVacia(celda);
 }
 
 bool contiene_numero(const tJuego& juego, int fila, int columna) {
-	bool contiene = false;
 	tCelda celda = dame_celda(juego.tablero, fila, columna);
-	if (contieneNumero(celda) == true) {
-		contiene = true;
-	}
-	return contiene;
+	
+	return contieneNumero(celda);
 }
 
 int dame_numero(const tJuego& juego, int fila, int columna)
@@ -106,12 +91,9 @@ int dame_numero(const tJuego& juego, int fila, int columna)
 }
 
 bool esta_completo(const tJuego& juego) {
-	bool completo = false;
 	int fila = num_filas(juego.tablero), columna = num_columnas(juego.tablero);
-	if (juego.num_descubiertas == (fila * columna) - juego.num_minas) {
-		completo = true;
-	}
-	return completo;
+
+	return juego.num_descubiertas == (fila * columna) - juego.num_minas;
 }
 
 bool mina_explotada(const tJuego& juego) {
@@ -119,17 +101,13 @@ bool mina_explotada(const tJuego& juego) {
 }
 
 bool esta_terminado(const tJuego& juego) {
-	bool terminado = false;
-	if (esta_completo(juego) || mina_explotada(juego)) {
-		terminado = true;
-	}
-	return terminado;
+	return esta_completo(juego) || mina_explotada(juego);
 }
 
 void poner_mina(tJuego& juego, int fila, int columna) {
 	tCelda celda = dame_celda(juego.tablero, fila, columna);
 
-	if (es_valida(juego.tablero, fila, columna) && celda.estado != MINA) {
+	if (es_valida(juego.tablero, fila, columna) && !esMina(celda)) {
 		poner_mina(celda);
 		poner_celda(juego.tablero, fila, columna, celda);
 
@@ -139,12 +117,7 @@ void poner_mina(tJuego& juego, int fila, int columna) {
 			int filaSig = fila + DirX[i], ColSig = columna + DirY[i];
 			if (es_valida(juego.tablero, filaSig, ColSig)) {
 				tCelda celdaAd = dame_celda(juego.tablero, filaSig, ColSig);
-				int numAd;
-
-				if (estaVacia(celdaAd)) {
-					poner_numero(celdaAd, 0);
-				}
-				numAd = dameNumero(celdaAd);
+				int numAd = dameNumero(celdaAd);
 
 				poner_numero(celdaAd, numAd + 1);
 
@@ -160,17 +133,13 @@ void marcar_desmarcar(tJuego& juego, int fila, int columna)
 
 	if (es_valida(juego.tablero, fila, columna) && estaMarcada(celda))
 	{
-		celda.marcada = false;
+		desmarcar_celda(celda);
 		poner_celda(juego.tablero, fila, columna, celda);
 	}
 	else if (es_valida(juego.tablero, fila, columna) && !estaMarcada(celda))
 	{
-		celda.marcada = true;
+		marcar_celda(celda);
 		poner_celda(juego.tablero, fila, columna, celda);
-	}
-	else
-	{
-		cout << "Posicion invalida. " << endl;
 	}
 }
 

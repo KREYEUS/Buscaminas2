@@ -28,38 +28,17 @@ bool esVisible(const tCelda& celda)
 
 bool  esMina(const tCelda& celda)
 {
-	bool mina = false;
-
-	if (celda.estado == MINA)
-	{
-		mina = true;
-	}
-
-	return mina;
+	return celda.estado == MINA;
 }
 
 bool estaVacia(const tCelda& celda)
 {
-	bool vacia = false;
-
-	if (celda.estado == VACIA)
-	{
-		vacia = true;
-	}
-
-	return vacia;
+	return celda.estado == VACIA;
 }
 
 bool contieneNumero(const tCelda& celda)
 {
-	bool numero = false;
-
-	if (celda.estado == NUMERO)
-	{
-		numero = true;
-	}
-
-	return numero;
+	return celda.estado == NUMERO;
 }
 
 bool estaMarcada(const tCelda& celda)

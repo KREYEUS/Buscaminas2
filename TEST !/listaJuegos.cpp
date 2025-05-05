@@ -13,21 +13,30 @@ void destruye(tListaJuegos& lista_juegos) {
 	}
 
 	delete [] lista_juegos.lista;
+	
+	lista_juegos.lista = nullptr;
+	lista_juegos.cont = 0;
+
+	// lista_juegos.capacidad = 0; // Por lo que he mirado, puede dar problemas
 }
 
-void insertar(tListaJuegos& lista_juegos, const tJuego& juego) {
+int insertar(tListaJuegos& lista_juegos, const tJuego& juego) {
 	redimensionamiento(lista_juegos);
+	int pos = busqueda(lista_juegos, juego);
+
 	if (lista_juegos.cont < lista_juegos.capacidad) {
 		tPtrJuego ptrJuego = new tJuego(juego);
-
-		lista_juegos.lista[lista_juegos.cont] = ptrJuego;
+		for (int i = lista_juegos.cont; i > pos; i--) {
+			lista_juegos.lista[i] = lista_juegos.lista[i - 1];
+		}
+		lista_juegos.lista[pos] = ptrJuego;
 		lista_juegos.cont++;
-	}	
+	}
+	return pos;
 }
 
 int numero_juegos(const tListaJuegos& lista_juegos) {
 	return lista_juegos.cont;
-
 }
 
 bool es_vacia(const tListaJuegos& lista_juegos) {
@@ -35,15 +44,15 @@ bool es_vacia(const tListaJuegos& lista_juegos) {
 }
 
 tJuego dame_juego(const tListaJuegos& lista_juegos, int pos) {
-	return *lista_juegos.lista[pos];
+	return *lista_juegos.lista[pos]; // Asumido que se ha comprobado que pos es correcto
 }
 
-void eliminar(tListaJuegos& lista_juegos, int pos) {
+void eliminar(tListaJuegos& lista_juegos, int pos) { // Elimina el elemento sobre escribiendolo
 	if (pos >= 0 && pos < lista_juegos.cont) {
 		for (int i = pos; i < lista_juegos.cont - 1; i++) {
 			lista_juegos.lista[i] = lista_juegos.lista[i + 1];
 		}
-		delete lista_juegos.lista[lista_juegos.cont - 1];
+		delete lista_juegos.lista[lista_juegos.cont - 1]; // Elimino el ultimo elemento que esta duplicado
 		lista_juegos.cont--;
 	}	
 }
@@ -62,26 +71,20 @@ void redimensionamiento(tListaJuegos& lista_juegos) {
 		lista_juegos.lista = vaux;
 	}	
 }
-/*
-* "La implementación del módulo tendrá que incluir las funciones necesarias para la gestión de la lista,
- comoson la búsqueda y el redimensionamiento de la misma"
-* Hay que implementarlo?
-int busqueda(const tListaJuegos& lista_juegos, tJuego& juego) {
+
+
+int busqueda(const tListaJuegos& lista_juegos, const tJuego& juego) {
 	int pos = 0;
 	bool encontrado = false;
-	while ((pos < lista_juegos.cont) && !encontrado) {
-		if (*lista_juegos.lista[pos] == juego) { 
-		// Parece que hay que definir un operador == para 
-		// comparar un tJuego con otro
+	int dificultadJuego = calcula_nivel(juego), i = 0;
+
+	while (!encontrado && i < lista_juegos.cont) {
+		if (calcula_nivel(*lista_juegos.lista[i]) >= dificultadJuego) {
+			// Es <= porque cuanto menor sea el numero, más dificil es
+			pos = i;
 			encontrado = true;
 		}
-		else {
-			pos++;
-		}
 	}
-	if (!encontrado) {
-		pos = -1;
-	}
+
 	return pos;
 }
-*/

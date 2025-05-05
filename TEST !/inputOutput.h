@@ -16,7 +16,12 @@ void mostrar_juego_consola(const tJuego& juego);
 bool carga_juego(tJuego& juego);
 std::istream& operator>> (std::istream& in, tJuego& juego);
 
-//bool cargar_juegos(tListaJuegos& lista_juegos);
+bool cargar_juegos(tListaJuegos& lista_juegos);
+
+bool guardar_juegos(const tListaJuegos& lista_juegos);
+void mostrar_juegos(const tListaJuegos& lista_juegos);
+ostream& operator<<(ostream& out, const tJuego& juego);
+
 /*
 mostrar_juegos(lista_juegos);
 guardar_juegos(lista_juegos);

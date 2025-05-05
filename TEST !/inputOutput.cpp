@@ -50,6 +50,7 @@ bool carga_juego(tJuego& juego) {
     if (arch.is_open()) {
         arch >> juego;
         exito = true;
+        arch.close();
     }
     else {
         cout << "No se pudo abrir el archivo. ";
@@ -73,13 +74,106 @@ istream& operator>> (istream& in, tJuego& juego) {
 
     return in;
 }
-/*
+
 bool cargar_juegos(tListaJuegos& lista_juegos) {
+    bool exito;
+    ifstream arch;
+    string fichero;
 
+    int num_juegos;
 
+    cout << "Introduce el nombre del fichero donde cargar los juegos: ";
+    cin >> fichero;
 
+    arch.open(fichero);
+
+    if (!arch.is_open()) {
+        cout << "No se pudo abrir el fichero." << endl;
+        exito = false;
+    }
+    else {
+        arch >> num_juegos;
+        for (int i = 0; i < num_juegos; i++) {
+            tJuego juego; 
+            // El enunciado no pide implementar un operador
+            // por lo que haremos la lectura manualmente
+            int filaj, colj, num_minas, filMin, ColMin;
+            arch >> filaj >> colj;
+
+            inicializar(juego, filaj, colj);
+
+            arch >> num_minas;
+
+            for (int i = 0; i < num_minas; i++) {
+                arch >> filMin >> ColMin;
+                poner_mina(juego, filMin, ColMin);
+            }
+
+            int pos = insertar(lista_juegos, juego);
+        }
+        arch.close();
+    }    
+    return exito;
 }
-*/
+
+bool guardar_juegos(const tListaJuegos& lista_juegos) {
+    bool exito;
+    string archDest;
+    ofstream arch;
+
+    cout << "Introduce el nombre del fichero donde guardar los juegos: ";
+    cin >> archDest;
+
+    arch.open(archDest);
+    if (!arch.is_open()) {
+        cout << "No se pudo abrir el fichero." << endl;
+        exito = false;
+    }
+    else {
+        exito = true;
+        int n_jueg = numero_juegos(lista_juegos);
+        
+        arch << n_jueg << endl;
+
+        for (int i = 0; i < n_jueg; i++) {
+            tJuego juego = dame_juego(lista_juegos, i);
+
+            int filas = dame_num_filas(juego);
+            int columnas = dame_num_columnas(juego);
+            int minas = dame_num_minas(juego);
+
+            arch << filas << ' ' << columnas << '\n';
+            arch << minas << '\n';
+
+            for (int k = 0; k < filas; k++) { // ++g a g++ porque puede haber minas en las esquinas
+                for (int j = 0; j < columnas; j++) {
+                    if (contiene_mina(juego, k, j)) {
+                        arch << k << ' ' << j << '\n';
+                    }
+                }
+            }
+        }
+        arch.close();
+    }    
+    return exito;
+}
+
+void mostrar_juegos(const tListaJuegos& lista_juegos) {
+    cout << "Mostrando lista de juegos por orden de dificultad... " << endl;
+    for (int i = 0; i < numero_juegos(lista_juegos); i++) {
+        tJuego juego = dame_juego(lista_juegos, i);
+        int filas = dame_num_filas(juego);
+        int columnas = dame_num_columnas(juego);
+        int minas = dame_num_minas(juego);
+
+        cout << "Juego " << i << ": " << endl
+            << "   Dimension: " << filas << " x " << columnas << endl
+            << "   Minas: " << minas << endl;
+    }
+}
+// El operador lo elimine porque como no lo pide el 
+// enunciado hacemos la escritura y lectura manualmente
+
 const char CHAR_MINA = '*';     // Mina
 
 

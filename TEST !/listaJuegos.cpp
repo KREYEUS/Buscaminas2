@@ -10,6 +10,7 @@ void inicializar(tListaJuegos& lista_juegos) {
 void destruye(tListaJuegos& lista_juegos) {
 	for (int i = 0; i < lista_juegos.cont; i++) {
 		delete lista_juegos.lista[i];
+		lista_juegos.lista[i] = nullptr;
 	}
 
 	delete [] lista_juegos.lista;
@@ -53,6 +54,7 @@ void eliminar(tListaJuegos& lista_juegos, int pos) { // Elimina el elemento sobr
 			lista_juegos.lista[i] = lista_juegos.lista[i + 1];
 		}
 		delete lista_juegos.lista[lista_juegos.cont - 1]; // Elimino el ultimo elemento que esta duplicado
+		lista_juegos.lista[lista_juegos.cont - 1] = nullptr;
 		lista_juegos.cont--;
 	}	
 }

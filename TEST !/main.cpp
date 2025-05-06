@@ -62,9 +62,7 @@ int main() {
 				break;
 			}
 			}
-		}		
-		cout << "La lista de juegos quedo: " << endl;
-		mostrar_juegos(lista_juegos);
+		}
 
 		destruye(lista_juegos);
 		destruye(lista_undo);
@@ -119,6 +117,7 @@ void juego_aleatorio(tJuego& juego, tListaUndo& lista_undo, tListaJuegos& lista_
 			juego = crear_juego(num_fils, num_cols, num_minas);
 			insertar(lista_juegos, juego);
 
+			cout << "La lista de juegos quedo: " << endl;
 			mostrar_juegos(lista_juegos);
 
 			jugarPartida(juego, lista_undo);

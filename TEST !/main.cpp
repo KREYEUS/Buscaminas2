@@ -78,13 +78,9 @@ void juega(tJuego& juego, int fila, int columna, tListaUndo& lista_undo) {
 	tListaPosiciones lista_pos;
 	inicializar(lista_pos);
 
-	if (!es_visible(juego, fila, columna)) {
-		juega(juego, fila, columna, lista_pos);
-		insertar_final(lista_undo, lista_pos);
-	}
-	else {
-		cout << "La celda seleccionada ya es visible. " << endl;
-	}
+	juega(juego, fila, columna, lista_pos);
+	insertar_final(lista_undo, lista_pos);
+
 	inicializar(lista_pos);
 }
 

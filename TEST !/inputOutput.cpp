@@ -76,7 +76,7 @@ istream& operator>> (istream& in, tJuego& juego) {
 }
 
 bool cargar_juegos(tListaJuegos& lista_juegos) {
-    bool exito;
+    bool exito = false;
     ifstream arch;
     string fichero;
 
@@ -89,7 +89,6 @@ bool cargar_juegos(tListaJuegos& lista_juegos) {
 
     if (!arch.is_open()) {
         cout << "No se pudo abrir el fichero." << endl;
-        exito = false;
     }
     else {
         arch >> num_juegos;

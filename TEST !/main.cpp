@@ -58,12 +58,15 @@ int main() {
 			}
 			}
 		}
+		// Esto para hacerlo mas facil de ver la lista, 
+		// ademas queda bien, por lo que tal vez se deje
+		cout << "La lista de juegos quedo: " << endl;
 		mostrar_juegos(lista_juegos);
 
 		if (guardar_juegos(lista_juegos)) {
 			cout << "Lista guardada con exito. " << endl;
 		}
-
+		// Eliminamos las listas
 		destruye(lista_juegos);
 		destruye(lista_undo);
 	}
@@ -97,25 +100,33 @@ void undo(tJuego& juego, tListaPosiciones lista_pos) {
 
 void juego_aleatorio(tJuego& juego, tListaUndo& lista_undo, tListaJuegos& lista_juegos) { // Que tan aleatorea?
 	int num_fils = 0, num_cols = 0, num_minas = 0;
+	bool valido = false;
 	inicializar(juego);
 
-	cout << "Introduzca dimensiones y datos: " << endl
-		<< "Numero de filas: ";
-	cin >> num_fils;
+	while (!valido) {
+		cout << "Introduzca dimensiones y datos: " << endl
+			<< "Numero de filas: ";
+		cin >> num_fils;
 
-	cout << "Numero de columnas: ";
-	cin >> num_cols;
+		cout << "Numero de columnas: ";
+		cin >> num_cols;
 
-	cout << "Numero de minas: ";
-	cin >> num_minas;
-	
-	if (num_fils >= 0 && num_fils < MAX_FILS && num_cols >= 0 && num_cols <= MAX_COLS) {
-		juego = crear_juego(num_fils, num_cols, num_minas);
-		insertar(lista_juegos, juego);
+		cout << "Numero de minas: ";
+		cin >> num_minas;
 
-		mostrar_juegos(lista_juegos);
+		if (num_fils >= 0 && num_fils < MAX_FILS && num_cols >= 0 && num_cols <= MAX_COLS && num_minas >= 0 && num_minas <= (num_fils * num_cols)) {
+			juego = crear_juego(num_fils, num_cols, num_minas);
+			insertar(lista_juegos, juego);
 
-		jugarPartida(juego, lista_undo);
+			mostrar_juegos(lista_juegos);
+
+			jugarPartida(juego, lista_undo);
+
+			valido = true;
+		}
+		else {
+			cout << "Datos invalidos. " << endl;
+		}
 	}	
 }
 

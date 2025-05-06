@@ -41,9 +41,6 @@ int main() {
 			switch (opcion) {
 			case 1: {
 				juego_aleatorio(juego, lista_undo, lista_juegos);
-
-				guardarNoguardar(lista_juegos);
-
 				break;
 			}
 			case 2: {
@@ -63,6 +60,7 @@ int main() {
 			}
 			}
 		}
+		guardarNoguardar(lista_juegos);
 
 		destruye(lista_juegos);
 		destruye(lista_undo);
@@ -183,7 +181,7 @@ void jugarPartida(tJuego& juego, tListaUndo& lista_undo) {
 
 void guardarNoguardar(const tListaJuegos& lista_juegos){
 	int eleccion;
-	cout << "Quiere guardar la nueva lista? 1: Si.  2: No. " << endl;
+	cout << "Quiere guardar la nueva lista? 1: Si.  2: No. R: ";
 	cin >> eleccion;
 	if (eleccion) {
 		if (guardar_juegos(lista_juegos)) {

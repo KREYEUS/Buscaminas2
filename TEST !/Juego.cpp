@@ -206,6 +206,7 @@ int calcula_nivel(const tJuego& juego) {
 tJuego crear_juego(int num_fils, int num_cols, int num_minas) {
 	bool terminado = false;
 	tJuego juego;
+	inicializar(juego);
 	inicializar(juego, num_fils, num_cols);
 
 	srand(time(nullptr));

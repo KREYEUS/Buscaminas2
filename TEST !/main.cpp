@@ -88,7 +88,8 @@ void juega(tJuego& juego, int fila, int columna, tListaUndo& lista_undo) {
 
 void undo(tJuego& juego, tListaPosiciones lista_pos) {
 	int posX, posY;
-	for (int i = 0; i < lista_pos.cont; i++) {
+	int tamano = longitud(lista_pos);
+	for (int i = 0; i < tamano; i++) {
 		posX = dame_posX(lista_pos, i);
 		posY = dame_posY(lista_pos, i);
 		ocultar(juego, posX, posY);

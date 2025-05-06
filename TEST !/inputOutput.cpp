@@ -29,7 +29,7 @@ void mostrar_resultado(const tJuego& juego) {
     else
     {
         cout << "Has abandonado el juego. " << endl
-            << "El numero de jugadas totales que ha realizado es:" << num_jug << endl;
+            << "El numero de jugadas totales que ha realizado es: " << num_jug << endl;
     }
 }
 

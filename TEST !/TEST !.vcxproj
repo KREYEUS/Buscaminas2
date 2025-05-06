@@ -153,6 +153,7 @@
     <Text Include="..\..\..\..\PPROJECTTT\PPROJECTTT\test1_visible.txt" />
     <Text Include="..\..\..\..\PPROJECTTT\PPROJECTTT\test2.txt" />
     <Text Include="..\..\..\..\PPROJECTTT\PPROJECTTT\test3.txt" />
+    <Text Include="fichero.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

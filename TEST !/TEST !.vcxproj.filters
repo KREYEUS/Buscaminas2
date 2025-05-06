@@ -82,5 +82,8 @@
     <Text Include="..\..\..\..\PPROJECTTT\PPROJECTTT\test3.txt">
       <Filter>Archivos de recursos</Filter>
     </Text>
+    <Text Include="fichero.txt">
+      <Filter>Archivos de recursos</Filter>
+    </Text>
   </ItemGroup>
 </Project>

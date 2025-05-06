@@ -52,10 +52,12 @@ int main() {
 
 				if(num >= 0 && num < num_jueg){
 					juego = dame_juego(lista_juegos, num);
-					jugarPartida(juego, lista_undo);
-				
+					jugarPartida(juego, lista_undo);				
 				}
-
+				break;
+			}
+			default: {
+				cout << "Opcion invalida. " << endl;
 				break;
 			}
 			}
@@ -109,7 +111,7 @@ void juego_aleatorio(tJuego& juego, tListaUndo& lista_undo, tListaJuegos& lista_
 		cout << "Numero de minas: ";
 		cin >> num_minas;
 		
-		if (num_fils >= 0 && num_fils < MAX_FILS &&
+		if (num_fils >= 0 && num_fils <= MAX_FILS &&
 			num_cols >= 0 && num_cols <= MAX_COLS &&
 			num_minas >= 0 && num_minas <= (num_fils * num_cols)) {
 			juego = crear_juego(num_fils, num_cols, num_minas);
@@ -183,7 +185,7 @@ void guardarNoguardar(const tListaJuegos& lista_juegos){
 	int eleccion;
 	cout << "Quiere guardar la nueva lista? 1: Si.  2: No. R: ";
 	cin >> eleccion;
-	if (eleccion) {
+	if (eleccion == 1) {
 		if (guardar_juegos(lista_juegos)) {
 			cout << "Lista guardada con exito. " << endl;
 		}

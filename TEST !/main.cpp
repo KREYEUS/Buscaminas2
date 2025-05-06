@@ -22,6 +22,7 @@ int main() {
 	inicializar(lista_juegos);
 
 	if (cargar_juegos(lista_juegos)) {
+		mostrar_juegos(lista_juegos);
 		int num_jueg = numero_juegos(lista_juegos);
 		if (num_jueg == 0) {
 			cout << "El fichero no contiene ningún juego. " << endl
@@ -56,7 +57,11 @@ int main() {
 			}
 			}
 		}
-		guardar_juegos(lista_juegos);
+		mostrar_juegos(lista_juegos);
+
+		if (guardar_juegos(lista_juegos)) {
+			cout << "Lista guardada con exito. " << endl;
+		}
 
 		destruye(lista_juegos);
 		destruye(lista_undo);
@@ -109,6 +114,9 @@ void juego_aleatorio(tJuego& juego, tListaUndo& lista_undo, tListaJuegos& lista_
 
 	juego = crear_juego(num_fils, num_cols, num_minas);
 	insertar(lista_juegos, juego);
+
+	mostrar_juegos(lista_juegos);
+
 	jugarPartida(juego, lista_undo);
 }
 

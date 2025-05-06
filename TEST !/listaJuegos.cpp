@@ -81,12 +81,16 @@ int busqueda(const tListaJuegos& lista_juegos, const tJuego& juego) {
 	int dificultadJuego = calcula_nivel(juego), i = 0;
 
 	while (!encontrado && i < lista_juegos.cont) {
-		if (calcula_nivel(*lista_juegos.lista[i]) >= dificultadJuego) {
-			// Es <= porque cuanto menor sea el numero, más dificil es
+		int niveli = calcula_nivel(*lista_juegos.lista[i]);
+		if (dificultadJuego > niveli) {
+			i++;
+			pos = i;
+		}
+		else{
 			pos = i;
 			encontrado = true;
 		}
-		i++;
+		
 	}
 
 	return pos;

@@ -109,9 +109,9 @@ bool cargar_juegos(tListaJuegos& lista_juegos) {
             }
 
             int pos = insertar(lista_juegos, juego);
-
-            exito = true;
         }
+        exito = true;
+
         arch.close();
     }    
     return exito;

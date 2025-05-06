@@ -1,5 +1,3 @@
-// Nombres de los integrantes del grupo: Senbo Zhou Pan y Ximena Pizarro
-
 #include "inputOutput.h"
 #include "listaUndo.h"
 #include <iostream>
@@ -172,12 +170,6 @@ void jugarPartida(tJuego& juego, tListaUndo& lista_undo) {
 		int filaTotal = dame_num_filas(juego), columnaTotal = dame_num_columnas(juego);
 		int num_minas = dame_num_minas(juego), num_des = dame_num_descubiertas(juego);
 		int victoria = (filaTotal * columnaTotal) - num_minas;
-
-		cout << "Numero de descubiertas: " << num_des << endl
-			<< "Numero de minas: " << num_minas << endl
-			<< "Dimensiones del tablero: " << filaTotal << " " << columnaTotal << endl
-			<< "Victoria: " << victoria << endl
-			<< "Ultimo movimiento: " << fila << " " << columna << endl;
 	}
 }
 

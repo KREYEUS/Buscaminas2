@@ -1,5 +1,3 @@
-// Nombres de los integrantes del grupo: Senbo Zhou Pan y Ximena Pizarro
-
 #include "listaJuegos.h"
 
 void inicializar(tListaJuegos& lista_juegos) {
@@ -19,9 +17,6 @@ void destruye(tListaJuegos& lista_juegos) {
 	
 	lista_juegos.lista = nullptr;
 	lista_juegos.cont = 0;
-
-	// lista_juegos.capacidad = 0; 
-	// Por lo que he mirado, puede dar problemas
 }
 
 int insertar(tListaJuegos& lista_juegos, const tJuego& juego) {

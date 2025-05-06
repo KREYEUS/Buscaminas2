@@ -1,8 +1,6 @@
-// Nombres de los integrantes del grupo: Senbo Zhou Pan y Ximena Pizarro
-
 #pragma once
 
-#include "listaPosiciones.h" // A?ado este cabecero, provisional
+#include "listaPosiciones.h"
 
 const int MAX_UNDO = 2;
 

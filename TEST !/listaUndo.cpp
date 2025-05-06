@@ -1,5 +1,3 @@
-// Nombres de los integrantes del grupo: Senbo Zhou Pan y Ximena Pizarro
-
 #include "listaUndo.h"
 
 void inicializar(tListaUndo& lista_undo) {
@@ -29,9 +27,10 @@ tListaPosiciones ultimos_movimientos(tListaUndo& lista_undo) {
 	tListaPosiciones lista_pos;
 	inicializar(lista_pos);
 	if (lista_undo.cont > 0) {
-		int tamano = longitud(*lista_undo.lista[lista_undo.cont - 1]); // Se copia manualmente
+		int tamano = longitud(*lista_undo.lista[lista_undo.cont - 1]);
 		for (int k = 0; k < tamano; k++) {
-			int posX = dame_posX(*lista_undo.lista[lista_undo.cont - 1], k), posY = dame_posY(*lista_undo.lista[lista_undo.cont - 1], k);
+			int posX = dame_posX(*lista_undo.lista[lista_undo.cont - 1], k), 
+				posY = dame_posY(*lista_undo.lista[lista_undo.cont - 1], k);
 			insertar_final(lista_pos, posX, posY);
 		}
 

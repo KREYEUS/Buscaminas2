@@ -1,5 +1,3 @@
-// Nombres de los integrantes del grupo: Senbo Zhou Pan y Ximena Pizarro
-
 #include "listaPosiciones.h"
 
 void inicializar(tListaPosiciones& lista_pos)

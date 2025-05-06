@@ -1,5 +1,3 @@
-// Nombres de los integrantes del grupo: Senbo Zhou Pan y Ximena Pizarro
-
 #include "Juego.h"
 #include <cstdlib>
 #include <ctime>
@@ -8,9 +6,9 @@ using namespace std;
 
 const int TAM = 8;
 
-typedef int tArrayDirX[TAM];
-const tArrayDirX DirX = { -1, -1, -1, 0, 1, 1, 1, 0 };
-const tArrayDirX DirY = { -1, 0, 1, 1, 1, 0, -1, -1 };
+typedef int tArrayDirX[2][TAM];
+const tArrayDirX Dir = { -1, -1, -1, 0, 1, 1, 1, 0,
+ -1, 0, 1, 1, 1, 0, -1, -1 };
 
 void inicializar(tJuego& juego)
 {
@@ -116,7 +114,7 @@ void poner_mina(tJuego& juego, int fila, int columna) {
 		juego.num_minas++;
 
 		for (int i = 0; i < TAM; i++) {
-			int filaSig = fila + DirX[i], ColSig = columna + DirY[i];
+			int filaSig = fila + Dir[0][i], ColSig = columna + Dir[1][i];
 			if (es_valida(juego.tablero, filaSig, ColSig)) {
 				tCelda celdaAd = dame_celda(juego.tablero, filaSig, ColSig);
 				int numAd = dame_numero(celdaAd);
@@ -179,7 +177,7 @@ void descubrir_alrededores(tJuego& juego, int fila, int columna, const tCelda& c
 	int numCel = dame_numero(celda);
 	if (!es_mina(celda) && numCel <= 0) {
 		for (int i = 0; i < TAM; i++) {
-			int filaSig = fila + DirX[i], ColSig = columna + DirY[i];
+			int filaSig = fila + Dir[0][i], ColSig = columna + Dir[1][i];
 
 			tCelda celdaAd = dame_celda(juego.tablero, filaSig, ColSig);
 			if (!esta_marcada(celdaAd) && !es_visible(celdaAd) && es_valida(juego.tablero, filaSig, ColSig)) {
@@ -211,7 +209,8 @@ tJuego crear_juego(int num_fils, int num_cols, int num_minas) {
 	srand(time(nullptr));
 
 	while (!terminado) {
-		int fila = rand() % (num_fils + 1); // Sumo 1 para alcanzar el valor máximo
+		// Sumo 1 para alcanzar el valor máximo
+		int fila = rand() % (num_fils + 1);
 		int col = rand() % (num_cols + 1); 
 
 		if (!contiene_mina(juego, fila, col)) {

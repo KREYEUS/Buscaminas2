@@ -1,5 +1,3 @@
-// Nombres de los integrantes del grupo: Senbo Zhou Pan y Ximena Pizarro
-
 #include "inputOutput.h"
 using namespace std;
 
@@ -16,20 +14,15 @@ void pedir_pos(int& fila, int& columna) {
 void mostrar_resultado(const tJuego& juego) {
     int num_jug = dame_num_jugadas(juego);
     if (esta_completo(juego) == true) {
-        cout << "Has ganado. " << endl
-            << "El numero de jugadas que ha realizado es:" << num_jug << endl;
+        cout << "Has ganado. " << endl;
     }
     else if (mina_explotada(juego) == true) {
 
-        cout << "Has perdido. " << endl
-            << "GAME OVER" << endl
-            << "El numero de jugadas que ha realizado es:" << endl
-            << num_jug << endl;
+        cout << "Has perdido. " << endl;
     }
     else
     {
-        cout << "Has abandonado el juego. " << endl
-            << "El numero de jugadas totales que ha realizado es: " << num_jug << endl;
+        cout << "Has abandonado el juego. " << endl;
     }
 }
 
@@ -172,9 +165,6 @@ void mostrar_juegos(const tListaJuegos& lista_juegos) {
             << "   Nivel: " << nivel << endl;
     }
 }
-
-// El operador lo elimine porque como no lo pide el 
-// enunciado hacemos la escritura y lectura manualmente
 
 const char CHAR_MINA = '*';     // Mina
 

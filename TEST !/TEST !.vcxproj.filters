@@ -85,5 +85,8 @@
     <Text Include="fichero.txt">
       <Filter>Archivos de recursos</Filter>
     </Text>
+    <Text Include="fichero0.txt">
+      <Filter>Archivos de recursos</Filter>
+    </Text>
   </ItemGroup>
 </Project>

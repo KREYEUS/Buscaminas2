@@ -22,14 +22,15 @@ int main() {
 	inicializar(lista_juegos);
 
 	if (cargar_juegos(lista_juegos)) {
-		mostrar_juegos(lista_juegos);
 		int num_jueg = numero_juegos(lista_juegos);
 		if (num_jueg == 0) {
-			cout << "El fichero no contiene ningún juego. " << endl
-				<< "A continuación se generará un juego aleatorio. ";
+			cout << "El fichero no contiene ningun juego. " << endl
+				<< "A continuacion se generara un juego aleatorio. " << endl;
 			juego_aleatorio(juego, lista_undo, lista_juegos);
 		}
 		else {
+			mostrar_juegos(lista_juegos);
+
 			int opcion;
 			cout << "Cargado con exito, elija opcion. " << endl
 				<< "Opcion 1: Jugar un nuevo juego. " << endl

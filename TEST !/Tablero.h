@@ -4,7 +4,7 @@
 
 #include "Celda.h"
 
-const int MAX_FILS = 20, MAX_COLS = 20;
+const int MAX_FILS = 30, MAX_COLS = 30;
 
 typedef struct {
 	int nFils, nCols;

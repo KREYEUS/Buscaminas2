@@ -17,7 +17,7 @@ void insertar_final(tListaUndo& lista_undo, tListaPosiciones& lista_pos) {
 		lista_undo.cont++;
 	}
 	else {
-		delete lista_undo.lista[0];
+		destruye(*lista_undo.lista[0]);
 		for (int i = 1; i < MAX_UNDO; i++) {
 			lista_undo.lista[i - 1] = lista_undo.lista[i];
 		}
@@ -39,9 +39,7 @@ tListaPosiciones ultimos_movimientos(tListaUndo& lista_undo) {
 void eliminar_ultimo(tListaUndo& lista_undo) {
 	if (lista_undo.cont > 0) {
 		lista_undo.cont--;
-		delete lista_undo.lista[lista_undo.cont];
-
-		lista_undo.lista[lista_undo.cont] = nullptr;
+		destruye(*lista_undo.lista[lista_undo.cont]);
 	}
 }
 

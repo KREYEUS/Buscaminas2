@@ -94,6 +94,7 @@ bool cargar_juegos(tListaJuegos& lista_juegos) {
         arch >> num_juegos;
         for (int i = 0; i < num_juegos; i++) {
             tJuego juego;
+            inicializar(juego);
             int filaj, colj, num_minas, filMin, ColMin;
             arch >> filaj >> colj;
 

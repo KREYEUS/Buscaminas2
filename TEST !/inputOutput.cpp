@@ -109,6 +109,8 @@ bool cargar_juegos(tListaJuegos& lista_juegos) {
             }
 
             int pos = insertar(lista_juegos, juego);
+
+            exito = true;
         }
         arch.close();
     }    
@@ -164,10 +166,12 @@ void mostrar_juegos(const tListaJuegos& lista_juegos) {
         int filas = dame_num_filas(juego);
         int columnas = dame_num_columnas(juego);
         int minas = dame_num_minas(juego);
+        int nivel = calcula_nivel(juego);
 
         cout << "Juego " << i << ": " << endl
             << "   Dimension: " << filas << " x " << columnas << endl
-            << "   Minas: " << minas << endl;
+            << "   Minas: " << minas << endl
+            << "   Nivel: " << nivel << endl;
     }
 }
 // El operador lo elimine porque como no lo pide el 

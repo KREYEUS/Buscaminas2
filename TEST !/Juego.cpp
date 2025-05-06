@@ -219,7 +219,10 @@ tJuego crear_juego(int num_fils, int num_cols, int num_minas) {
 		if (!contiene_mina(juego, fila, col)) {
 			poner_mina(juego, fila, col);
 		}
-		else if (dame_num_minas(juego) == num_minas) {
+
+		int n_minasj = dame_num_minas(juego);
+
+		if (n_minasj == num_minas) {
 			terminado = true;
 		}
 

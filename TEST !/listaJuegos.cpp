@@ -86,6 +86,7 @@ int busqueda(const tListaJuegos& lista_juegos, const tJuego& juego) {
 			pos = i;
 			encontrado = true;
 		}
+		i++;
 	}
 
 	return pos;

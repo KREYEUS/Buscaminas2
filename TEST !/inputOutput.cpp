@@ -93,9 +93,7 @@ bool cargar_juegos(tListaJuegos& lista_juegos) {
     else {
         arch >> num_juegos;
         for (int i = 0; i < num_juegos; i++) {
-            tJuego juego; 
-            // El enunciado no pide implementar un operador
-            // por lo que haremos la lectura manualmente
+            tJuego juego;
             int filaj, colj, num_minas, filMin, ColMin;
             arch >> filaj >> colj;
 
@@ -146,7 +144,7 @@ bool guardar_juegos(const tListaJuegos& lista_juegos) {
             arch << filas << ' ' << columnas << '\n';
             arch << minas << '\n';
 
-            for (int k = 0; k < filas; k++) { // ++g a g++ porque puede haber minas en las esquinas
+            for (int k = 0; k < filas; k++) {
                 for (int j = 0; j < columnas; j++) {
                     if (contiene_mina(juego, k, j)) {
                         arch << k << ' ' << j << '\n';
@@ -174,12 +172,11 @@ void mostrar_juegos(const tListaJuegos& lista_juegos) {
             << "   Nivel: " << nivel << endl;
     }
 }
+
 // El operador lo elimine porque como no lo pide el 
 // enunciado hacemos la escritura y lectura manualmente
 
 const char CHAR_MINA = '*';     // Mina
-
-
 
 void colorNumero(int numero) {
     switch (numero)
@@ -209,22 +206,22 @@ void mostrarCoutSeparadorMat(int huecoCelda, const tJuego& juego) {
 void mostrarCeldaConsola(const tJuego& juego, int fila, int columna, int huecos) {
     tCelda celda = dame_celda(juego.tablero, fila, columna);
 
-    if (!celda.visible && !celda.marcada) {
+    if (!es_visible(celda) && !esta_marcada(celda)) {
         cout << BG_GRAY << GRAY << setw(huecos) << setfill(' ') << ' ' << RESET;
     }
     else {
         cout << BG_BLACK << BLACK;
-        if (!celda.marcada) {
-            if (celda.estado == MINA) {
+        if (!esta_marcada(celda)) { 
+            if (es_mina(celda)) {
                 cout << RED << setw(huecos) << setfill(' ') << CHAR_MINA << RESET;
             }
             else {
-                if (celda.estado == VACIA) {
+                if (esta_vacia(celda)) {
                     cout << setw(huecos) << setfill(' ') << ' ' << RESET;
                 }
                 else {
-                    if (celda.estado == NUMERO) {
-                        int numero = celda.numero;
+                    if (contiene_numero(celda)) {
+                        int numero = dame_numero(celda);
                         colorNumero(numero);
                         cout << setw(huecos) << setfill(' ') << numero << RESET;
                     }

@@ -7,7 +7,7 @@ void inicializar(tTablero& tablero) {
 	tablero.nFils = 0;
 }
 
-void inicializar_tablero(tTablero& tablero, int nfils, int ncols) {
+void inicializar(tTablero& tablero, int nfils, int ncols) {
 	tablero.nFils = nfils;
 	tablero.nCols = ncols;
 	tCelda celda;

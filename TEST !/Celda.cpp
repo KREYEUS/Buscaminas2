@@ -11,37 +11,37 @@ void inicializar(tCelda& celda)
 	celda.marcada = false;
 }
 
-tEstado dameEstado(const tCelda& celda)
+tEstado dame_estado(const tCelda& celda)
 {
 	return celda.estado;
 }
 
-int dameNumero(const tCelda& celda)
+int dame_numero(const tCelda& celda)
 {
 	return celda.numero;
 }
 
-bool esVisible(const tCelda& celda)
+bool es_visible(const tCelda& celda)
 {
 	return celda.visible;
 }
 
-bool  esMina(const tCelda& celda)
+bool  es_mina(const tCelda& celda)
 {
 	return celda.estado == MINA;
 }
 
-bool estaVacia(const tCelda& celda)
+bool esta_vacia(const tCelda& celda)
 {
 	return celda.estado == VACIA;
 }
 
-bool contieneNumero(const tCelda& celda)
+bool contiene_numero(const tCelda& celda)
 {
 	return celda.estado == NUMERO;
 }
 
-bool estaMarcada(const tCelda& celda)
+bool esta_marcada(const tCelda& celda)
 {
 	return celda.marcada;
 }
@@ -51,7 +51,7 @@ void  descubrir_celda(tCelda& celda)
 	celda.visible = true;
 }
 
-void ocultarCelda(tCelda& celda)
+void ocultar_celda(tCelda& celda)
 {
 	celda.visible = false;
 }

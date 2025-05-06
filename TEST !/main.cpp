@@ -8,7 +8,7 @@ using namespace std;
 
 void juega(tJuego& juego, int fila, int columna, tListaUndo& lista_undo);
 void undo(tJuego& juego, tListaPosiciones lista_pos);
-
+void guardarNoguardar(const tListaJuegos& lista_juegos);
 void juego_aleatorio(tJuego& juego, tListaUndo& lista_undo, tListaJuegos& lista_juegos);
 void jugarPartida(tJuego& juego, tListaUndo& lista_undo);
 
@@ -41,6 +41,9 @@ int main() {
 			switch (opcion) {
 			case 1: {
 				juego_aleatorio(juego, lista_undo, lista_juegos);
+
+				guardarNoguardar(lista_juegos);
+
 				break;
 			}
 			case 2: {
@@ -49,24 +52,20 @@ int main() {
 
 				cout << "Inserte el juego que quiere jugar: ";
 				cin >> num;
+
 				if(num >= 0 && num < num_jueg){
 					juego = dame_juego(lista_juegos, num);
 					jugarPartida(juego, lista_undo);
 				
 				}
+
 				break;
 			}
 			}
-		}
-		// Esto para hacerlo mas facil de ver la lista, 
-		// ademas queda bien, por lo que tal vez se deje
+		}		
 		cout << "La lista de juegos quedo: " << endl;
 		mostrar_juegos(lista_juegos);
 
-		if (guardar_juegos(lista_juegos)) {
-			cout << "Lista guardada con exito. " << endl;
-		}
-		// Eliminamos las listas
 		destruye(lista_juegos);
 		destruye(lista_undo);
 	}
@@ -98,7 +97,7 @@ void undo(tJuego& juego, tListaPosiciones lista_pos) {
 	}
 }
 
-void juego_aleatorio(tJuego& juego, tListaUndo& lista_undo, tListaJuegos& lista_juegos) { // Que tan aleatorea?
+void juego_aleatorio(tJuego& juego, tListaUndo& lista_undo, tListaJuegos& lista_juegos) {
 	int num_fils = 0, num_cols = 0, num_minas = 0;
 	bool valido = false;
 	inicializar(juego);
@@ -113,8 +112,10 @@ void juego_aleatorio(tJuego& juego, tListaUndo& lista_undo, tListaJuegos& lista_
 
 		cout << "Numero de minas: ";
 		cin >> num_minas;
-
-		if (num_fils >= 0 && num_fils < MAX_FILS && num_cols >= 0 && num_cols <= MAX_COLS && num_minas >= 0 && num_minas <= (num_fils * num_cols)) {
+		
+		if (num_fils >= 0 && num_fils < MAX_FILS &&
+			num_cols >= 0 && num_cols <= MAX_COLS &&
+			num_minas >= 0 && num_minas <= (num_fils * num_cols)) {
 			juego = crear_juego(num_fils, num_cols, num_minas);
 			insertar(lista_juegos, juego);
 
@@ -178,5 +179,19 @@ void jugarPartida(tJuego& juego, tListaUndo& lista_undo) {
 			<< "Dimensiones del tablero: " << filaTotal << " " << columnaTotal << endl
 			<< "Victoria: " << victoria << endl
 			<< "Ultimo movimiento: " << fila << " " << columna << endl;
+	}
+}
+
+void guardarNoguardar(const tListaJuegos& lista_juegos){
+	int eleccion;
+	cout << "Quiere guardar la nueva lista? 1: Si.  2: No. " << endl;
+	cin >> eleccion;
+	if (eleccion) {
+		if (guardar_juegos(lista_juegos)) {
+			cout << "Lista guardada con exito. " << endl;
+		}
+		else {
+			cout << "Fallo el guardado. " << endl;
+		}
 	}
 }

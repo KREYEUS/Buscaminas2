@@ -1,3 +1,5 @@
+// Nombres de los integrantes del grupo: Senbo Zhou Pan y Ximena Pizarro
+
 #pragma once
 
 #include "Juego.h"

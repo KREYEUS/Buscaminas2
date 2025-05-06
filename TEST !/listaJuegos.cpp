@@ -1,3 +1,5 @@
+// Nombres de los integrantes del grupo: Senbo Zhou Pan y Ximena Pizarro
+
 #include "listaJuegos.h"
 
 void inicializar(tListaJuegos& lista_juegos) {
@@ -18,7 +20,8 @@ void destruye(tListaJuegos& lista_juegos) {
 	lista_juegos.lista = nullptr;
 	lista_juegos.cont = 0;
 
-	// lista_juegos.capacidad = 0; // Por lo que he mirado, puede dar problemas
+	// lista_juegos.capacidad = 0; 
+	// Por lo que he mirado, puede dar problemas
 }
 
 int insertar(tListaJuegos& lista_juegos, const tJuego& juego) {
@@ -45,15 +48,18 @@ bool es_vacia(const tListaJuegos& lista_juegos) {
 }
 
 tJuego dame_juego(const tListaJuegos& lista_juegos, int pos) {
-	return *lista_juegos.lista[pos]; // Asumido que se ha comprobado que pos es correcto
+	return *lista_juegos.lista[pos]; 
+	// Asumido que se ha comprobado que pos es correcto
 }
 
-void eliminar(tListaJuegos& lista_juegos, int pos) { // Elimina el elemento sobre escribiendolo
+void eliminar(tListaJuegos& lista_juegos, int pos) { 
+	// Elimina el elemento sobre escribiendolo
 	if (pos >= 0 && pos < lista_juegos.cont) {
 		for (int i = pos; i < lista_juegos.cont - 1; i++) {
 			lista_juegos.lista[i] = lista_juegos.lista[i + 1];
 		}
-		delete lista_juegos.lista[lista_juegos.cont - 1]; // Elimino el ultimo elemento que esta duplicado
+		// Elimino el ultimo elemento que esta duplicado
+		delete lista_juegos.lista[lista_juegos.cont - 1]; 
 		lista_juegos.lista[lista_juegos.cont - 1] = nullptr;
 		lista_juegos.cont--;
 	}	
@@ -89,9 +95,7 @@ int busqueda(const tListaJuegos& lista_juegos, const tJuego& juego) {
 		else{
 			pos = i;
 			encontrado = true;
-		}
-		
+		}		
 	}
-
 	return pos;
 }

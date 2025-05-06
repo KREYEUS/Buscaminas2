@@ -13,7 +13,7 @@ typedef struct {
 
 
 void inicializar(tTablero& tablero);
-void inicializar_tablero(tTablero& tablero, int nfils, int ncols);
+void inicializar(tTablero& tablero, int nfils, int ncols);
 int num_filas(const tTablero& tablero);
 int num_columnas(const tTablero& tablero);
 tCelda dame_celda(const tTablero& tablero, int fila, int columna);

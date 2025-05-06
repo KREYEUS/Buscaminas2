@@ -211,7 +211,8 @@ tJuego crear_juego(int num_fils, int num_cols, int num_minas) {
 	srand(time(nullptr));
 
 	while (!terminado) {
-		int fila = rand() % (num_fils + 1); // Sumo 1 para alcanzar el valor máximo
+		// Sumo 1 para alcanzar el valor máximo
+		int fila = rand() % (num_fils + 1); 
 		int col = rand() % (num_cols + 1); 
 
 		if (!contiene_mina(juego, fila, col)) {

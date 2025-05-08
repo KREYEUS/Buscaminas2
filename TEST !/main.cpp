@@ -111,8 +111,8 @@ void juego_aleatorio(tJuego& juego, tListaUndo& lista_undo, tListaJuegos& lista_
 		cout << "Numero de minas: ";
 		cin >> num_minas;
 		
-		if (num_fils >= 0 && num_fils <= MAX_FILS &&
-			num_cols >= 0 && num_cols <= MAX_COLS &&
+		if (num_fils >= 1 && num_fils <= MAX_FILS &&
+			num_cols >= 1 && num_cols <= MAX_COLS &&
 			num_minas >= 0 && num_minas <= (num_fils * num_cols)) {
 			juego = crear_juego(num_fils, num_cols, num_minas);
 			insertar(lista_juegos, juego);

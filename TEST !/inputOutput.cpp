@@ -17,7 +17,7 @@ void mostrar_resultado(const tJuego& juego) {
     int num_jug = dame_num_jugadas(juego);
     if (esta_completo(juego) == true) {
         cout << "Has ganado. " << endl
-            << "El numero de jugadas que ha realizado es:" << num_jug << endl;
+            << "El numero de jugadas que ha realizado es: " << num_jug << endl;
     }
     else if (mina_explotada(juego) == true) {
 
